@@ -1,0 +1,186 @@
+//page layout center
+body {
+    background: #5CA2C6;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    margin: 0;
+}
+
+//elements center
+.container {
+display: flex;
+justify-content: center;
+position: relative;
+}
+
+//positioning
+.head{
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 10px solid black;
+    background: white;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    align-items: baseline ;
+}
+//circle's inside
+.head::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    box-shadow: inset  -22px 5px 0 3px rgba(0, 0, 0, .2);
+    //inset -inside shadow
+}
+//neck
+.head::after {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 30px;
+    background: white;
+    margin-top: 300px;
+    border: 10px solid black;  
+}
+//eyes defining 
+.left, .right {
+ background: black;
+ border-radius: 50%;
+ width: 175px;
+ height: 175px;
+ position: absolute;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+//eyes positioning
+.left {
+    margin-left: -180px;
+}
+
+//eyes positioning
+.right {
+    margin-right: -180px;
+}
+//eyes inside shadow
+.left::before, .right::before {
+    content: "";
+    position: absolute;
+    width: 175px;
+    height: 175px;
+    border-radius: 50%;
+    box-shadow: inset  -22px 5px 0 3px rgba(255, 255, 255, 0.164);
+}
+//eye's eyeball - pupil
+.right::after, .left::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+}
+
+//pupil round shape
+.right::after {
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: 5px solid white;
+}
+
+//another circles added - eyeshadow part
+.cutout {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+    align-self: flex-end;
+    margin-bottom: -50px;
+}
+
+.mouth {
+width: 180px;
+height: 180px;
+position: absolute;
+border: 10px solid black;
+border-radius: 50%;
+align-self: center;
+clip-path: circle(60% at 49% 100%); //work as crop in pics
+
+    &::before, &::after{  //dimple left 
+        position: absolute;
+        content: "";
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 10px solid black;
+        top: 102px;
+        left: -9px;
+        clip-path: circle(50% at 0 0);
+    }
+    &::after{  //dimple right
+    left: 140px;
+    top: 107px;
+    clip-path: circle(50% at 100% 0);    
+    }
+}
+
+.body {
+    position: absolute;
+    height: 50px;
+    width: 100px;
+    background: rgb(0, 140, 255); 
+    top: 350px !important;
+    border: 10px solid black;
+    border-radius:  100% 100% 100% 100% / 100% 100% 0% 0%;
+
+    &::before, &::after{
+        position: absolute;
+        content: "";
+        width: 15px;
+        height: 20px;
+        top: 30px;
+    }
+    &::before {     //left arm
+        border-right: 10px solid black;
+    }
+    &::after {      //right arm
+        border-left: 10px solid black;
+        right: 0;
+    }
+}
+
+.bg {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    left: -100px;
+    border-radius: 30%;
+    top: 20px;
+    box-shadow: 
+    400px 100px 0 0 rgba(0, 0, 0, 0.15),
+    50px 150px 0 0 rgba(0, 0, 0, 0.15),
+    400px 250px 0 0 rgba(0, 0, 0, 0.15);
+    animation: bgAnim 3s infinite alternate;
+}
+
+@keyframes bgAnim {
+    from {
+        box-shadow: 
+        400px 100px 0 0 rgba(0, 0, 0, 0.15),
+        50px 150px 0 0 rgba(0, 0, 0, 0.15),
+        400px 250px 0 0 rgba(0, 0, 0, 0.15);
+    }
+    to {
+        box-shadow: 
+        450px 100px 0 0 rgba(0, 0, 0, 0.144),
+        0px 150px 0 0 rgba(0, 0, 0, 0.144),
+        350px 250px 0 0 rgba(0, 0, 0, 0.144);
+    }
+}
